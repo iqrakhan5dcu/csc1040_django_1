@@ -4,7 +4,7 @@ from django.shortcuts import render
 def home(request):
     # books = get books from db
     username = request.GET.get('username','Default user')
-    return render(request, 'home.html', {'username':username, 'nums':[i for i in range(0,10)]})
+    return render(request, 'home.html', {'username':username})
 
 def about(request):
     return render(request, 'about.html')
