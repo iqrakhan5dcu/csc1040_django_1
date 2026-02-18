@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Book
 
 # Create your views here.
 
@@ -32,3 +33,21 @@ def user_profile(request, id):
         return render(request, 'not_found.html', {'id' : id})
     
     return render(request, 'profile.html', {'user' : user, 'id' : id})
+
+def book_list(request):
+    books = Book.objects.all() # get ALL books from database
+    return render(request, 'book_list.html', {'books' : books})
+
+def book_detail(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, 'book_detail.html', {'book' : book})
+
+def book_search(request):
+    query = request.GET.get('q', '') # get the 'q' parameter, default to empty string
+
+    if query:
+        books = Book.objects.filter(title__icontains=query)
+    else:
+        books = Book.objects.none() # return empty queryset if so search item
+
+    return render(request, 'book_search.html', {'books' : books, 'query' : query})
