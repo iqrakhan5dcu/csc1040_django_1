@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home Page</title>
+        <title>{{ title }}</title>
     </head>
     <body>
-        <p>Hello {{ username }}</p>
+        {% if username %}
+            <p>Hello {{ username }}</p>
+        {% else %}
+            <p>Hello guest</p>
+        {% endif %}
         <a href="/about">About me</a>
+        <a href="/contacts">Contact us</a>
         <h1>welcome to my django page</h1>
+
+        <ul>
+            {% for item in items %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        <ul>
+            {% for number in numbers %}
+                {% if number|divisibleby:2 %}
+                    <li>{{ number }} - Even</li>
+                {% else %}
+                    <li>{{ number }} - Odd</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     </body>
 </html>
