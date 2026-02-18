@@ -17,3 +17,18 @@ def about(request):
 
 def contacts(request):
     return render(request, 'contacts.html')
+
+def user_profile(request, id):
+    # in a real app youd fetch from a database
+    users = {
+        1: {'name' : 'Charlie Kirk', 'email' : 'charlie@USA.com'},
+        2: {'name' : 'Iqra Khan', 'email' : 'iqra552khan@gmail.com'},
+        3: {'name' : 'Peter Griffin', 'email' : 'peter@gmail.com'},
+        
+    }
+
+    user = users.get(id)
+    if user is None:
+        return render(request, 'not_found.html', {'id' : id})
+    
+    return render(request, 'profile.html', {'user' : user, 'id' : id})

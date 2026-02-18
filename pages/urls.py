@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     path("", views.home, name="home"), # homepage for 0.0.0.0:8000
     path("about/", views.about, name="about"),
-    path("contacts/", views.contacts, name="contacts")
+    path("contacts/", views.contacts, name="contacts"),
+    path('users/<int:id>/', views.user_profile, name='user_profile'),
 ]

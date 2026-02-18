@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contacts' %}">Contact US</a>
+        <a href="{% url 'user_profile' id=1 %}">View Charlie kirk's profile</a>
+        <a href="{% url 'user_profile' id=2 %}">View Iqra Khan's profile</a>  
+        <a href="{% url 'user_profile' id=3 %}">View Peter Griffin's profile</a>    
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Site</p>
+    </footer>
+</body>
+</html>

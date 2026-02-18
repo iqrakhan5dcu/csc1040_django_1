@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ title }}</title>
-    </head>
-    <body>
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to My Site</h1>
+<p>This is the home page. We have lots of interesting content here.</p>
+<body>
         {% if username %}
             <p>Hello {{ username }}</p>
         {% else %}
             <p>Hello guest</p>
         {% endif %}
-        <a href="/about">About me</a>
-        <a href="/contacts">Contact us</a>
         <h1>welcome to my django page</h1>
 
         <ul>
@@ -29,4 +29,4 @@
             {% endfor %}
         </ul>
     </body>
-</html>
+{% endblock %}
