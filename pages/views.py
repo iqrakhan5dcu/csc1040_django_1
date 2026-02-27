@@ -51,3 +51,8 @@ def book_search(request):
         books = Book.objects.none() # return empty queryset if so search item
 
     return render(request, 'book_search.html', {'books' : books, 'query' : query})
+
+def author_detail(request, author_id):
+    author = get_object_or_404(Author, id=author_id)
+    books = Book.objects.filter(author=author)  # Get all books by this author
+    return render(request, 'author_detail.html', {'author': author, 'books': books})
